@@ -153,4 +153,12 @@ getCommands().then(commands => commands.forEach(command => client.commands?.set(
 
 client.login(token);
 
+if (process.env.HEROKU === "1") {
+  // to deal with Heroku's auto-sleep limitation
+  app.get('/', (req, res) => {
+    return res.status(200).json({});
+  })
+}
+
+
 app.listen(5000, () => console.log("Listening on port 5000"));
