@@ -13,6 +13,7 @@ import { ClientWithCommands, Command, IServer } from './typedefs';
 // helpers
 // import { sendMessage, sendError } from './helpers/sendMessage';
 import { findServer, createServer, deleteServer } from './helpers/server';
+import { deleteMeeting } from './helpers/meeting';
 
 // initialize mongoose
 const mongoDBString = process.env.MONGO_DB_STRING;
@@ -92,8 +93,9 @@ client.on("guildCreate", async function (guild) {
 
 client.on("voiceStateUpdate", function (oldState, newState) {
   // console.log("Voice state updated");
-  console.log(oldState);
-  console.log(newState);
+  if (oldState.channel?.members.array().length === 0) {
+    deleteMeeting(oldState.channelID!);
+  }
 });
 
 client.on("message", async function (message) {

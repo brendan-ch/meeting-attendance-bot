@@ -248,7 +248,7 @@ function deleteMeeting(channelID: string) {
   const index = meetings.findIndex(meeting => meeting.voiceChannel?.id === channelID);
 
   if (index !== -1) {
-    meetings.slice(index, 1);
+    meetings.splice(index, 1);
   } else {
     console.error("Meeting doesn't exist in array.");
   }
