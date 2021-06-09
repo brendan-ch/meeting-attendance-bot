@@ -9,6 +9,7 @@ import Discord from 'discord.js';
 import mongoose from 'mongoose';
 import express from 'express';
 const app = express();
+app.set('port', 5000);
 
 // typedefs
 import { ClientWithCommands, Command, IServer } from './typedefs';
