@@ -1,5 +1,8 @@
-import dotenv = require('dotenv');
-dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
+  const dotenv = require('dotenv');
+  dotenv.config();
+}
+
 
 import fs from 'fs';
 import Discord from 'discord.js';
