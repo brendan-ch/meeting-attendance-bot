@@ -116,6 +116,9 @@ client.on("message", async function (message) {
     prefix = server!.prefix;
   }
 
+  // check message against prefix and author
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift()  // gets the first thing in args
   if (!client.commands || !commandName) return;
