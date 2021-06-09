@@ -4,7 +4,9 @@
   "description": "Discord bot that tracks meeting attendance and prints it in a message.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsc && node dist/index.js",
+    "start": "node dist/index.js",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "unnameduser95",
